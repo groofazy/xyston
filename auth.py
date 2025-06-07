@@ -11,6 +11,7 @@ load_dotenv()
 CLIENT_ID = os.getenv("CLIENT_ID")
 REDIRECT_URI = os.getenv("REDIRECT_URI")
 TOKEN_URL = "https://accounts.spotify.com/api/token"
+SECRET_KEY = os.urandom(64)
 
 # generate a code verifier (source: https://www.stefaanlippens.net/oauth-code-flow-pkce.html)
 def generate_code_verifier():
