@@ -43,12 +43,16 @@ def get_auth_url(verifier):
 
 def exchange_code_for_token(code, verifier):
     data = {
-        "grant-type": "authorization_code",
+        "grant_type": "authorization_code",
         "code": code,
         "redirect_uri": REDIRECT_URI,
         "client_id": CLIENT_ID,
         "code_verifier": verifier
     }
 
-    response = requests.post(TOKEN_URL, data=data)
+    headers = {
+    "Content-Type": "application/x-www-form-urlencoded"
+    }
+    
+    response = requests.post(TOKEN_URL, data=data, headers=headers)
     return response.json()
