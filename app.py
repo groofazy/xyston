@@ -32,3 +32,20 @@ def callback():
         return "login successful!"
     else:
         return f"Error: {token_response}", 400
+    
+@app.route("/me")
+def profile():
+    token = session.get("access_token")
+    if not token:
+        return redirect("/login")
+    
+    headers = {
+        "Authorization": f"Bearer {token}"
+    }
+
+    response = requests.get("https://api.spotify.com/v1/me", headers=headers)
+
+    return response.json()
+
+
+app.run(debug=True)
