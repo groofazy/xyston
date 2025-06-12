@@ -11,7 +11,7 @@ load_dotenv()
 CLIENT_ID = os.getenv("CLIENT_ID")
 REDIRECT_URI = os.getenv("REDIRECT_URI")
 TOKEN_URL = "https://accounts.spotify.com/api/token"
-SECRET_KEY = os.urandom(64)
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # generate a code verifier (source: https://www.stefaanlippens.net/oauth-code-flow-pkce.html)
 def generate_code_verifier():
@@ -56,3 +56,8 @@ def exchange_code_for_token(code, verifier):
     
     response = requests.post(TOKEN_URL, data=data, headers=headers)
     return response.json()
+
+def get_auth_header(token):
+    return {
+        "Authorization": f"Bearer {token}"
+    }

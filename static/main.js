@@ -4,6 +4,36 @@ const btn = document.querySelector("#submit_btn");
 const blind_box = document.querySelector("#blind_box_btn");
 const result_box = document.querySelector("#result_box");
 
+// display user info
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("/user-data") // from app.py
+    .then(res => res.json())
+    .then(user => {
+    const userInfo = document.getElementById("user_info");
+    const greeting = document.createElement("p");
+    greeting.textContent = `Welcome, ${user.display_name}!`;
+
+    userInfo.appendChild(greeting);
+
+    if (user.images && user.images.length > 0) {
+        const img = document.createElement("img");
+        img.src = user.images[0].url;
+        img.alt = "Profile";
+        img.style.width = "50px";
+        img.style.borderRadius = "50%";
+        img.style.marginLeft = "10px";
+        userInfo.appendChild(img);
+    }
+})
+    .catch(err => {
+        console.error("User data fetch failed:", err);
+        alert("Failed to load profile info.");
+    });
+
+    load_artists();
+    loadInventory();
+})
+
 // Submit artist to backend
 btn.addEventListener("click", () => {
     const name = input.value.trim();
@@ -256,7 +286,3 @@ function loadInventory() {
         
     });
 }
-
-// Initial render
-load_artists();
-loadInventory();

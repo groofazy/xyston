@@ -4,6 +4,13 @@ body {
     color: #333;
     padding: 20px;
   }
+
+  #user_info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
   
   #title {
     font-family: monospace;
