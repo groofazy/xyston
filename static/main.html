@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>Front Page</title>
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
-    <div>Hello World!</div>
-    
+    <div id="title">Spotify Blind Box Simulator</div>
+    <div>
+        <input id="artist_input"></input>
+        <button id="submit_btn">Add Artist</button>
+        <div id="artist_list"></div>
+    </div>
+
+    <div>
+        <button id="blind_box_btn">Click for a Blind Box</button>
+    </div>
+
+    <div id="result_box"></div>
+
+    <div id="inventory_section">
+        <h2>Your Inventory</h2>
+        <div id="inventory_list"></div>
+    </div>
+
 </body>
-    <script src="main.js"></script>
+
+<script src="/static/main.js"></script>
 </html>
